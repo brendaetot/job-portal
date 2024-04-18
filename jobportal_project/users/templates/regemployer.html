@@ -1,0 +1,53 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+<div class="container">
+  <form action="{% url 'regemployer' %}" class="form-control w3-center py-5" method="POST">
+    {% csrf_token %}
+      <div class="mb-3">
+        <label for="companyname" class="form-label">Company Name</label>
+        <input type="text" class="form-control" id="companyname" name="companyname">
+      </div>
+      <div class="mb-3">
+        <label for="companyemail" class="form-label">Company Email</label>
+        <input type="email" class="form-control" id="companyemail " name="companyemail">
+        <i class="w3-text-red">{{msg}}</i>
+      </div>
+      <div class="mb-3">
+        <label for="countrycode" class="form-label">Country Code</label>
+        <select class="form-select" id="countrycode" name="countrycode">
+          <!-- Add options for country codes here -->
+          <option value="256">256</option>
+          <option value="254">254</option>
+          <option value="253">253</option>
+          <option value="255">255</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="country" class="form-label">Country</label>
+        <input type="text" class="form-control" id="country" name="country">
+
+        <div class="mb-3">
+          <label for="location" class="form-label">Location</label>
+          <input type="text" class="form-control" id="location" name="location">
+        </div>
+        
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" name="password">
+        </div>
+        <div class="mb-3">
+          <label for="confirmpassword" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" id="confirmpassword" name="confirmpassword">
+        </div>
+      
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      </div>
+
+
+
+
+{%endblock%}
+            
+    

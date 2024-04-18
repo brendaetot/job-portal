@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit Job Posting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body style="background-color: rgb(182, 230, 214);">
+    <div class="text-white"> Welcome, {{ username}}!</div>
+  <header class="p-3  text-white" style="background-color: rgb(37, 156, 146);">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+              <use xlink:href="#bootstrap" />
+            </svg>
+          </a>
+  
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="/" class="nav-link px-2 text-secondary"></a></li>
+            <li><a href="#" class="nav-link px-2 text-white"></a></li>
+            <li><a href="#" class="nav-link px-2 text-white"></a></li>
+            <li><a href="#" class="nav-link px-2 text-white"></a></li>
+          </ul>
+  
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" >
+            <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+          </form>
+  
+          <div class="text-end">
+            <button type="button" class="btn btn-outline-light me-2"><a href="/" style="text-decoration: none;" class="text-white">Home</a></button>
+            <button type="button" class="btn btn-outline-light me-2"><a href="#" style="text-decoration: none;" class="text-white">Contact Us</a></button>
+            <button type="button" class="btn btn-outline-light me-2"><a href="#" style="text-decoration: none;" class="text-white">About us</a></button>
+            <button type="button" class="btn btn-outline-light me-2"><a href="#" style="text-decoration: none;" class="text-white">Logout</a></button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container my-5" style="width: 65%; height: 50%;">
+      <h1>Edit Jobs</h1>
+      <form action="{% url 'edit_job' id=id %}" method="POST" class="form-control">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="jobTitle" class="form-label">Job Title</label>
+          <input type="text" class="form-control" id="jobTitle" value="{{title}}" name="jobTitle" required>
+        </div>
+        <div class="mb-3">
+          <label for="jobDescription" class="form-label">Job Description</label>
+          <textarea class="form-control" id="jobDescription" rows="3" name="jobDescription" required>{{description}}</textarea>
+        </div>
+        <div class="mb-3">
+          <label for="jobLocation" class="form-label">Job Location</label>
+          <input type="text" class="form-control" id="jobLocation" value="{{location}}"  name="jobLocation" required>
+        </div>
+        <div class="mb-3">
+          <label for="jobType" class="form-label">Job Type</label>
+          <select class="form-select" id="jobType" value="{{type}}" name="jobType" required>
+            <option value="">Select Job Type</option>
+            <option value="part-time" {% if type == 'part-time' %}selected{% endif %}>Part Time</option>
+            <option value="full-time" {% if type == 'full-time' %}selected{% endif %}>Full Time</option>
+            <option value="contract" {% if type == 'contract' %}selected{% endif %}>Contract</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="jobCategory" class="form-label">Job Category</label>
+          <select class="form-select" id="jobCategory" value="{{category}}" name="jobCategory" required>
+            <option value="">Select Job Category</option>
+            <option value="engineering" {% if type == 'engineering' %}selected{% endif %}>Engineering</option>
+            <option value="sales" {% if type == 'sales' %}selected{% endif %}>Sales</option>
+            <option value="marketting" {% if type == 'marketting' %}selected{% endif %}>Marketting</option>
+            <option value="others" {% if type == 'others' %}selected{% endif %}>Others</option>
+
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="jobRequirements" class="form-label">Job Requirements</label>
+          <textarea class="form-control" id="jobRequirements"  rows="3" name="jobRequirements" required>{{requirements}}</textarea>
+        </div>
+        <div class="d-flex my-3">
+            <button class="btn btn-success " type="submit">Update</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-warning" type="reset">cancel</button>
+        
+        </div>
+        
+            
+      </form>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

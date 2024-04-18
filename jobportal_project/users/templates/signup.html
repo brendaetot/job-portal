@@ -1,0 +1,235 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- bootstrap css -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <title>Hakelix Jobs-Sign-UP</title>
+</head>
+
+<body style="background-color: rgb(182, 230, 214)">
+  <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <h1 class="display-4 fw-bold lh-1 mb-3">Welcome to Hakelix Jobs</h1>
+
+    <div class="row align-items-center g-lg-5 py-5">
+      <div class="col-lg-7 text-center text-lg-start">
+        <h5>Are you a job seeker?</h5>
+        <p>
+          Register here to find a job that you need that is tailored to your
+          experience, expertise and skills. There are plenty of Jobs here for
+          everyone. Goodluck with the Search!
+        </p>
+      </div>
+      <div class="col-md-10 mx-auto col-lg-5">
+        <h5>Are you an employer?</h5>
+        <p>
+          Register here to Find here competent empoyees that will see your
+          company grow
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row d-flex">
+      <div class="col-md-6">
+        <!-- First column content -->
+        <!-- <button class="w-100 btn-lg btn-primary" type="submit"><a class="text-white" style="text-decoration: none;" href="regapplicant">REGISTER AS APPLICANT</a></button> -->
+
+        <button class="btn btn-info float-left" style="background-color: aliceblue">
+          <i class="fa-solid fa-user-plus"></i>&nbsp;&nbsp;<a href="" data-bs-toggle="modal"
+            data-bs-target="#applicant" class="btn">Register as a Job Seeker</a>
+        </button>
+
+      </div>
+      <div class="col-md-6">
+        <!-- Second column content -->
+        <button class="btn btn-info float-right" style="background-color: aliceblue">
+          <i class="fa-solid fa-user-plus"></i>&nbsp;&nbsp;<a href="" data-bs-toggle="modal"
+            data-bs-target="#registerRecruiter" class="btn">Register as a Recruiter</a>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <!-- Register Applicant-->
+    <div class="modal fade" id="applicant" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Register as a job</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/regapplicant" enctype="multipart/form-data" method="POST" class="form-control">
+            {% csrf_token %}
+
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <div class="mb-3">
+              <label for="confirmpassword" class="form-label">Confirm Password</label>
+              <input type="password" class="form-control" id="comfirmpassword" name="comfirmpassword">
+            </div>
+            <div class="mb-3">
+              <label for="dob" class="form-label">Date of Birth</label>
+              <input type="date" class="form-control" id="dob" name="dob">
+            </div>
+            <div class="mb-3">
+              <label for="gender" class="form-label">Gender</label>
+              <select class="form-select" id="gender" name="gender">
+                <option selected>Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="nationality" class="form-label">Nationality</label>
+              <input type="text" class="form-control" id="nationality" name="nationality">
+            </div>
+            <div class="mb-3">
+              <label for="location" class="form-label">Location</label>
+              <input type="text" class="form-control" id="location" name="location">
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" id="phone" name="phone">
+            </div>
+            <div class="mb-3">
+              <label for="country-code" class="form-label">Country Code</label>
+              <select class="form-select" id="country-code" name="country-code">
+                <option selected>Select Country Code</option>
+                <option value="1">+256</option>
+                <option value="44">+254</option>
+                <option value="91">+91</option>
+                <option value="91">+253</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="country" class="form-label">Country</label>
+              <input type="text" class="form-control" id="country" name="country">
+            </div>
+            <div class="mb-3">
+              <label for="education-level" class="form-label">Highest Education Level</label>
+              <select class="form-select" id="education-level" name="education-level">
+                <option selected>Select Education Level</option>
+                <option value="high-school">High School</option>
+                <option value="bachelors">Bachelor's Degree</option>
+                <option value="masters">Master's Degree</option>
+                <option value="phd">PhD</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="years-of-experience" class="form-label">Years of Experience</label>
+              <select class="form-select" id="years-of-experience" name="years-of-experience">
+                <option selected>Select Years of Experience</option>
+                <option value="0-1">0-1 years</option>
+                <option value="1-3">1-3 years</option>
+                <option value="3-5">3-5 years</option>
+                <option value="5+">5+ years</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="file-upload" class="form-label">Upload Resume</label>
+              <input class="form-control" type="file" id="file-upload" name="document">
+              <i class="w3-text-red">{{msg}}</i>
+            </div>
+            <button type="submit" class="btn btn-primary my-3" value="Submit">Submit</button>
+          </form>
+
+        </div>
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+        
+  </div>
+
+  <!-- Register Applicant-->
+
+
+
+  <!-- Register recruiter pop up -->
+  <div class="modal fade" id="registerRecruiter" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Register as a Recruiter</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url 'regemployer' %}" class="form-control w3-center py-5" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="companyname" class="form-label">Company Name</label>
+              <input type="text" class="form-control" id="companyname" name="companyname">
+            </div>
+            <div class="mb-3">
+              <label for="companyemail" class="form-label">Company Email</label>
+              <input type="email" class="form-control" id="companyemail " name="companyemail">
+              <i class="w3-text-red">{{msg}}</i>
+            </div>
+            <div class="mb-3">
+              <label for="countrycode" class="form-label">Country Code</label>
+              <select class="form-select" id="countrycode" name="countrycode">
+                <!-- Add options for country codes here -->
+                <option value="256">256</option>
+                <option value="254">254</option>
+                <option value="253">253</option>
+                <option value="255">255</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="country" class="form-label">Country</label>
+              <input type="text" class="form-control" id="country" name="country">
+
+              <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" id="location" name="location">
+              </div>
+
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password">
+              </div>
+              <div class="mb-3">
+                <label for="confirmpassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmpassword" name="confirmpassword">
+              </div>
+
+              <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+
+        </div>
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+        
+  </div>
+
+  <!-- bootstrap Bundle with popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

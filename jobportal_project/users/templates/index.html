@@ -1,0 +1,261 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hakelix Jobs</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+
+<body style="background-color: rgb(182, 230, 214)">
+  <div class="text-white" style="background-color: rgb(6, 56, 68)">
+    <i class="fas fa-user fa-2x"></i>
+    Welcome, {{ username}}!
+  </div>
+  <header class="p-3 text-white" style="background-color: rgb(37, 152, 156)">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+            <use xlink:href="#bootstrap" />
+          </svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
+          <!-- <li><a href="#" class="nav-link px-2 text-white">Contact us</a></li> -->
+          <li><a href="#" class="nav-link px-2 text-white"></a></li>
+          <li><a href="#" class="nav-link px-2 text-white"></a></li>
+        </ul>
+
+        <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+        </form> -->
+
+        <!-- <div class="text-end">
+          <button type="button" class="btn btn-outline-light me-2"><a href="/login_applicant" style="text-decoration: none;" class="text-white">Applicant Login</a></button>
+          <button type="button" class="btn btn-outline-light me-2"><a href="/login_recruiter" style="text-decoration: none;" class="text-white">Recruiter Login</a></button>
+          <button type="button" class="btn btn-outline-light me-2"><a href="/signup" style="text-decoration: none;" class="text-white">Sign-up</a></button>
+        </div> -->
+        <button class="btn btn-info float-right" style="background-color: aliceblue">
+          &nbsp;&nbsp;<a href="" data-bs-toggle="modal"
+            data-bs-target="#loginApplicant" class="btn">Login-Applicant</a>
+        </button>
+        <button class="btn btn-info float-right" style="background-color: aliceblue">
+          &nbsp;&nbsp;<a href="" data-bs-toggle="modal"
+            data-bs-target="#loginRecruiter" class="btn">Login-Recruiter</a>
+        </button>
+
+        <button class="btn btn-info float-right" style="background-color: aliceblue">
+          &nbsp;&nbsp;<a href="" data-bs-toggle="modal" data-bs-target="#register"
+            class="btn">SignUp</a>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="modal fade" id="loginApplicant" data-bs-backdrop="static" data-bs-keyboard="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">LoginApplicant</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/login_applicant" class="p-4 p-md-5 border rounded-3 bg-light" method="POST">
+              {% csrf_token %}
+              <div>
+                <label for="floatinginput">Email Address</label>
+                <input type="email" name="email" class="form-control" id="email" placeholder="name@eg.com" />
+              </div>
+
+              <div class="form-floating my-3">
+                <label for="floatingpasword">Password</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="password" />
+                <i style="color: red">{{msg}}</i>
+              </div>
+
+              <button class="w-100 btn-lg btn-primary" type="submit">
+                Login
+              </button>
+
+              <small class="text-muted">Don't have an account?
+                <a href="signup">Register here</a></small>
+            </form>
+          </div>
+          <div class="modal-footer"></div>
+        </div>
+      </div>
+          
+    </div>
+    <div class="modal fade" id="loginRecruiter" data-bs-backdrop="static" data-bs-keyboard="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Login Recruiter</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/login_recruiter" class="p-4 p-md-5 border rounded-3 bg-light" method="POST">
+              {% csrf_token %}
+              <div>
+                <label for="floatinginput">Email Address</label>
+                <input type="email" name="email" class="form-control" id="email" placeholder="name@eg.com" />
+              </div>
+
+              <div class="form-floating my-3">
+                <label for="floatingpasword">Password</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="password" />
+                <i style="color: red">{{msg}}</i>
+              </div>
+
+              <button class="w-100 btn-lg btn-primary" type="submit">
+                Login
+              </button>
+
+              <small class="text-muted">Don't have an account?
+                <a href="signup">Register here</a></small>
+            </form>
+          </div>
+          <div class="modal-footer"></div>
+        </div>
+      </div>
+          
+    </div>
+
+    <div class="modal fade" id="register" data-bs-backdrop="static" data-bs-keyboard="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Sign-up</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <!-- First column content -->
+                  <button class="w-100 btn-lg btn-primary" type="submit">
+                    <a class="text-white" style="text-decoration: none" href="regapplicant">REGISTER AS APPLICANT</a>
+                  </button>
+                </div>
+                <div class="col-md-6">
+                  <!-- Second column content -->
+                  <button class="w-100 btn-lg btn-primary text-white" type="submit">
+                    <a class="text-white" style="text-decoration: none" href="regemployer">REGISTER AS EMPLOYER</a>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer"></div>
+        </div>
+      </div>
+          
+    </div>
+
+    <section class="py-5 text-center">
+      <div class="container">
+        <h1 class="display-4 fw-bold">Find Your Dream Job</h1>
+        <p class="lead">
+          Search through thousands of job listings and start your career
+          today.
+        </p>
+        <!-- <form class="row justify-content-center">
+            <div class="col-12 col-md-6 mb-2">
+              <input type="text" class="form-control" placeholder="Job title" />
+            </div>
+            <div class="col-12 col-md-4 mb-2">
+              <input type="text" class="form-control" placeholder="Location" />
+            </div>
+            <div class="col-12 col-md-2">
+              <button
+                type="submit"
+                class="btn btn-outline-light me-2 btn-success"
+              >
+                Search
+              </button>
+            </div>
+          </form> -->
+      </div>
+    </section>
+
+    <section class="py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center mb-4"></h2>
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="{% static 'images/j1.jpeg' %}" class="d-block w-100" alt="Image 1" />
+                </div>
+                <div class="carousel-item">
+                  <img src="{% static 'images/j5.png' %}" class="d-block w-100" alt="Image 1" />
+                </div>
+                <div class="carousel-item">
+                  <img src="{% static 'images/j3.jpeg' %}" class="d-block w-100" alt="Image 1" />
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </a>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <!-- <div class="card">
+              <div class="card-body">
+                <!<img src="{% static 'images/j3.jpeg' %}" class="d-block w-100" alt="Image 1"> -->
+            <!-- </div> -->
+            <!-- </div>  -->
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="{% static 'images/j3.jpeg' %}" class="d-block w-100" alt="Image 1" />
+                </div>
+                <div class="carousel-item">
+                  <img src="{% static 'images/j2.jpeg' %}" class="d-block w-100" alt="Image 1" />
+                </div>
+                <div class="carousel-item">
+                  <img src="{% static 'images/j4.jpeg' %}" class="d-block w-100" alt="Image 1" />
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="p-3 bg-dark text-white text-center">
+    <div class="container">
+      <p class="mb-0">© 2023 Hakelex-Tech Co.Ltd. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

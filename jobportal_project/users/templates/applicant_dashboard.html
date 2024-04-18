@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Applicant Dashboard</title>
+    
+</head>
+<body style="background-color: rgb(182, 230, 214);">
+    <div class="text-white" style="background-color: rgb(17, 125, 158);"> Welcome, {{ username}}!</div>
+  <header class="p-3  text-white" style="background-color: rgb(37, 156, 146);">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+            <use xlink:href="#bootstrap" />
+          </svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="/" class="nav-link px-2 text-secondary"></a></li>
+          <li><a href="#" class="nav-link px-2 text-white"></a></li>
+          <li><a href="#" class="nav-link px-2 text-white"></a></li>
+          <li><a href="#" class="nav-link px-2 text-white"></a></li>
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+        </form>
+
+        <div class="text-end">
+          <button type="button" class="btn btn-outline-light me-2"><a href="/" style="text-decoration: none;" class="text-white">Home</a></button>
+          <button type="button" class="btn btn-outline-light me-2"><a href="#" style="text-decoration: none;" class="text-white">Contact Us</a></button>
+          <button type="button" class="btn btn-outline-light me-2"><a href="#" style="text-decoration: none;" class="text-white">About us</a></button>
+          <button type="button" class="btn btn-outline-light me-2"><a href="/user_logout" style="text-decoration: none;" class="text-white">Logout</a></button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <hr style="color: aliceblue;">
+    <div class="container">
+        <form action="/appiicant_dashboard" method="POST">
+            <table class="table my-3" style="background-color: rgb(30, 143, 133);">
+                <thead class="text-light">
+                    <tr>
+                        <th class="text-light">ID No: </th>
+                        <th>Job Title</th>
+                        <th>Job Description</th>
+                        <th>Job Location</th>
+                        <th>Job type</th>  
+                        <th>Job Category</th>  
+                        <th>Job Requirements</th>  
+                        <th>Actions</th>  
+
+                    </tr>
+
+                </thead>
+                <tbody>
+                  {% for x in results%}
+                    <tr class="text-light">   
+                        <td>{{x.0}}</td>
+                        <td>{{x.1}}</td>
+                        <td>{{x.2}}</td>
+                        <td>{{x.3}}</td>
+                        <td>{{x.4}}</td>
+                        <td>{{x.5}}</td>
+                        <td>{{x.6}}</td>
+                
+                        
+                        <td class="d-flex">
+                            <button class="btn btn-success"><a href="https://lirauni.ac.ug/employment-opportunities/" style="text-decoration: none; color: aliceblue;">Apply</a></button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+
+
+            
+            
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>
